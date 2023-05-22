@@ -7,26 +7,22 @@
             <tr>
                 <th>Date</th>
                 <th>Day</th>
-                <th>Battery</th>
+                <th>HWSH</th>
                 <th>pre_ft</th>
-                <th>H/L</th>
-                <th>Open</th>
-                <th>Close</th>
+             
                 <th>Open</th>
                 <th>Close</th>
             </tr>
         </thead>
         <tfoot>
             <tr>
-                <th>Date</th>
-                <th>Day</th>
-                <th>Battery</th>
-                <th>pre_ft</th>
-                <th>H/L</th>
-                <th>Open</th>
-                <th>Close</th>
-                <th>Open</th>
-                <th>Close</th>
+                    <th>Date</th>
+                    <th>Day</th>
+                    <th>HWSH</th>
+                    <th>pre_ft</th>
+               
+                    <th>Open</th>
+                    <th>Close</th>
             </tr>
         </tfoot>
         <tbody>
@@ -34,13 +30,11 @@
                     <tr>
                         <td><%= tide.date %></td>
                         <td><%= tide.day %></td>
-                        <td><%= tide.tideTimeBattery %></td>
+                        <td><%= tide.hwsh %></td>
                         <td><%= tide.pred_ft %></td>
-                        <td><%= tide.h_l %></td>
-                        <td class="thick"><%= tide.windowOpen1 %></td>
-                        <td ><%= tide.windowClose1 %></td>
-                        <td class="thick"><%= tide.windowOpen2 %></td>
-                        <td ><%= tide.windowClose2 %></td>
+                        <td class="thick"><%= tide.windowOpen %></td>
+                        <td ><%= tide.windowClose %></td>
+
                         <!-- <td>
                             <a class="btn btn-primary" href="/edit/<%= tide.id %>">Edit</a>
                             <form style="display: inline;" action="/delete/<%= tide.id %>?_method=DELETE" method="POST">

@@ -60,8 +60,9 @@ router.get("/tide1", (req, res) => {
   console.log(searchQuery);
   AnchSail40up.find(searchQuery) //{"date": {$slice:14}
     .then((tides1) => {
+        req.flash("success_msg", "All went well, tides fetched");
       console.log(tides1);
-      res.render("index", { tides: tides1 });
+      res.render("tide1", { tides: tides1 });
     })
     .catch((err) => {
       req.flash("error_msg", "ERROR: " + err);
@@ -69,7 +70,7 @@ router.get("/tide1", (req, res) => {
       res.redirect("/");
     });
 });
-router.get("/tide1", (req, res) => {
+router.get("/tide2", (req, res) => {
   let dateJa = new Date();
   let dateJa1 = new Date();
 
@@ -93,10 +94,10 @@ router.get("/tide1", (req, res) => {
   };
 
   console.log(searchQuery);
-  AnchSail40up.find(searchQuery) //{"date": {$slice:14}
-    .then((tides1) => {
-      console.log(tides1);
-      res.render("index", { tides: tides1 });
+  AnchArr40up.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      console.log(tides2);
+      res.render("tide2", { tides: tides2 });
     })
     .catch((err) => {
       req.flash("error_msg", "ERROR: " + err);
