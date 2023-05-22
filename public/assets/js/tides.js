@@ -21,7 +21,7 @@ $(document).ready(function() {
 
 
 
-function filUpTheDateBase (anchArr40up){
+function filUpTheDateBase2 (anchArr40up){
   
   anchArr40up.forEach(element => {
 
@@ -48,6 +48,6 @@ function filUpTheDateBase (anchArr40up){
 
 console.log(anchArr40up);
 // showAnchSail40up(anchSail40up);
-filUpTheDateBase (anchArr40up);
+// filUpTheDateBase (anchArr40up);
 
 });

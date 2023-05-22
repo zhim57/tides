@@ -101,7 +101,7 @@ router.post("/api/filUpTheDateBase/", (req, res) => {
     .then((anchArr40up) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       // res.redirect('/');
-      console.log("added to DB");
+    //   console.log("added to DB");
     })
     .catch((err) => {
       // req.flash('error_msg', 'ERROR: '+err)
