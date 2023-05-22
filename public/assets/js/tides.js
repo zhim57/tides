@@ -6,29 +6,12 @@ import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
 $(document).ready(function() {
   $('#dataTable').DataTable();
 
-function showAnchSail40up (tableObject){
-  const encodedData = encodeURIComponent(JSON.stringify(tableObject))
-
-let table =encodedData;
-$.ajax("api/showAnchSail40up/",{
-  type:"GET",
-  data:table
-}).then((res) => {
-  let dudu = res;
-  tideObject = res;
-
-  if (dudu != undefined) {
-  console.log("tideObject received");
-
-  } else {
-    console.log("problem with the response tideObj");
-  }
-});
 
 
 
-}
-function filUpTheDateBase2 (tableObject){
+
+
+function filUpTheDateBase1 (tableObject){
   
   tableObject.forEach(element => {
 
@@ -55,6 +38,6 @@ function filUpTheDateBase2 (tableObject){
 
 console.log(anchSail40up);
 // showAnchSail40up(anchSail40up);
-// filUpTheDateBase1 (anchSail40up);
+filUpTheDateBase1 (anchSail40up);
 
 });
