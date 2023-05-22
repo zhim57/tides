@@ -15,7 +15,7 @@ var PORT = process.env.PORT ;
 
 
 // connecting mongo database
-mongoose.connect( "mongodb://127.0.0.1:27017/mongodb" ,{   //process.env.DATABASE_LOCAL||
+mongoose.connect( process.env.MONGODB_URI || process.env.DATABASE_LOCAL , {
   useNewUrlParser: true,  
   useUnifiedTopology: true,
 
