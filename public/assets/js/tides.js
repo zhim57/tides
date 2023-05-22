@@ -1,4 +1,14 @@
-import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+import anchArr40up from "../../assets/data/arr_anc_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
 
 
 
@@ -11,12 +21,12 @@ $(document).ready(function() {
 
 
 
-function filUpTheDateBase2 (tableObject){
+function filUpTheDateBase (anchArr40up){
   
-  tableObject.forEach(element => {
+  anchArr40up.forEach(element => {
 
   let table =element;
-  $.ajax("api/filUpTheDateBase1/",{
+  $.ajax("api/filUpTheDateBase/",{
   type:"POST",
   data:table
   }).then((res) => {
@@ -36,8 +46,8 @@ function filUpTheDateBase2 (tableObject){
 }
 
 
-console.log(anchSail40up);
+console.log(anchArr40up);
 // showAnchSail40up(anchSail40up);
-// filUpTheDateBase1 (anchSail40up);
+filUpTheDateBase (anchArr40up);
 
 });
