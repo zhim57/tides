@@ -11,7 +11,7 @@ $(document).ready(function() {
 
 
 
-function filUpTheDateBase1 (tableObject){
+function filUpTheDateBase2 (tableObject){
   
   tableObject.forEach(element => {
 
@@ -38,6 +38,6 @@ function filUpTheDateBase1 (tableObject){
 
 console.log(anchSail40up);
 // showAnchSail40up(anchSail40up);
-filUpTheDateBase1 (anchSail40up);
+// filUpTheDateBase1 (anchSail40up);
 
 });
