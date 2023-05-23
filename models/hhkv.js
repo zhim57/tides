@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-let hkkvSchema = new mongoose.Schema({
+let hhkvSchema = new mongoose.Schema({
     date : String,
     day : String,
     bttery : String,
@@ -9,4 +9,4 @@ let hkkvSchema = new mongoose.Schema({
   
 });
 
-module.exports = mongoose.model('Hkkv', hkkvSchema);
+module.exports = mongoose.model('Hhkv', hhkvSchema);

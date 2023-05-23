@@ -1,6 +1,6 @@
 // import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
 // import anchArr40up from "../../assets/data/arr_anc_more_40_or_more_800.js";
-import hkkv from "../../assets/data/hkk.js";
+import hhkv from "../../assets/data/hhk.js";
 // import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
 // import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
 // import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
@@ -13,8 +13,8 @@ import hkkv from "../../assets/data/hkk.js";
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  function filUpTheDateBase3(hkkv) {
-    anchArr40up.forEach((element) => {
+  function filUpTheDateBase3(hhkv) {
+    hhkv.forEach((element) => {
       let table = element;
       $.ajax("api/filUpTheDateBase/", {
         type: "POST",
@@ -31,7 +31,7 @@ $(document).ready(function () {
     });
   };
 
-  console.log(hkkv);
+  console.log(hhkv);
   // showAnchSail40up(anchSail40up);
-  filUpTheDateBase3 (anchArr40up);
+  filUpTheDateBase3 (hhkv);
 });
