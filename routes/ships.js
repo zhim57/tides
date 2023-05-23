@@ -38,7 +38,7 @@ router.get("/tide1", (req, res) => {
   let dateJa = new Date();
   let dateJa1 = new Date();
 
-  dateJa1.setDate(dateJa1.getDate() + 14);
+  dateJa1.setDate(dateJa1.getDate() + 7);
   var dd = String(dateJa1.getDate()).padStart(2, "0");
   var mm = String(dateJa1.getMonth() + 1).padStart(2, "0"); //January is 0!
   var yyyy = dateJa1.getFullYear();
@@ -50,18 +50,18 @@ router.get("/tide1", (req, res) => {
 
   dateJa = mm + "/" + dd + "/" + yyyy;
 
-  console.log(dateJa);
-  console.log(dateJa1);
+//   console.log(dateJa);
+//   console.log(dateJa1);
 
   let searchQuery = {
     date: { $gte: dateJa, $lte: dateJa1 },
   };
 
-  console.log(searchQuery);
+//   console.log(searchQuery);
   AnchSail40up.find(searchQuery) //{"date": {$slice:14}
     .then((tides1) => {
-        req.flash("success_msg", "All went well, tides fetched");
-      console.log(tides1);
+        // req.flash("success_msg", "All went well, tides fetched");
+    //   console.log(tides1);
       res.render("tide1", { tides: tides1 });
     })
     .catch((err) => {
@@ -74,7 +74,7 @@ router.get("/tide2", (req, res) => {
   let dateJa = new Date();
   let dateJa1 = new Date();
 
-  dateJa1.setDate(dateJa1.getDate() + 14);
+  dateJa1.setDate(dateJa1.getDate() + 7);
   var dd = String(dateJa1.getDate()).padStart(2, "0");
   var mm = String(dateJa1.getMonth() + 1).padStart(2, "0"); //January is 0!
   var yyyy = dateJa1.getFullYear();
@@ -86,17 +86,17 @@ router.get("/tide2", (req, res) => {
 
   dateJa = mm + "/" + dd + "/" + yyyy;
 
-  console.log(dateJa);
-  console.log(dateJa1);
+//   console.log(dateJa);
+//   console.log(dateJa1);
 
   let searchQuery = {
     date: { $gte: dateJa, $lte: dateJa1 },
   };
 
-  console.log(searchQuery);
+//   console.log(searchQuery);
   AnchArr40up.find(searchQuery) //{"date": {$slice:14}
     .then((tides2) => {
-      console.log(tides2);
+    //   console.log(tides2);
       res.render("tide2", { tides: tides2 });
     })
     .catch((err) => {
