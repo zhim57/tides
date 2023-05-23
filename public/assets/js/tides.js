@@ -16,7 +16,7 @@ $(document).ready(function () {
   function filUpTheDateBase3(hhkv) {
     hhkv.forEach((element) => {
       let table = element;
-      $.ajax("api/filUpTheDateBase/", {
+      $.ajax("api/filUpTheDateBase3/", {
         type: "POST",
         data: table,
       }).then((res) => {
