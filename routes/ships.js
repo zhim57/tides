@@ -2,7 +2,6 @@ const express = require("express");
 const router = express.Router();
 const flash = require("connect-flash");
 
-const Tide = require("../models/tide");
 const AnchSail40up = require("../models/anchSail40up");
 const AnchArr40up = require("../models/anchArr40up");
 const Hhkv = require("../models/hhkv");
@@ -11,31 +10,8 @@ const Hhkv = require("../models/hhkv");
 router.get("/", (req, res) => {
   res.render("index1");
 });
-// router.get('/', (req, res)=> {
-//     Tide.find({})
-//         .then(tides => {
-//             res.render('index', {tides : tides});
-//         })
-//         .catch(err=> {
-//             req.flash('error_msg', 'ERROR: '+err)
-//             res.redirect('/');
-//         })
 
-// });
-
-router.get("/employee/new", (req, res) => {
-  res.render("new");
-});
-router.get("api/showAnchSail40up/", (req, res) => {
-  console.log(req.body.data);
-  res.render("index", { data: data });
-});
-
-router.get("/employee/search", (req, res) => {
-  res.render("search", { employee: "" });
-});
-
-router.get("/tide1", (req, res) => {
+function getSearchQuery() {
   let dateJa = new Date();
   let dateJa1 = new Date();
 
@@ -51,19 +27,30 @@ router.get("/tide1", (req, res) => {
 
   dateJa = mm + "/" + dd + "/" + yyyy;
 
-//   console.log(dateJa);
-//   console.log(dateJa1);
-
   let searchQuery = {
     date: { $gte: dateJa, $lte: dateJa1 },
   };
-
-//   console.log(searchQuery);
+  return searchQuery;
+}
+router.get("/tide1", (req, res) => {
+  let searchQuery = getSearchQuery();
   AnchSail40up.find(searchQuery) //{"date": {$slice:14}
     .then((tides1) => {
-        // req.flash("success_msg", "All went well, tides fetched");
-    //   console.log(tides1);
+      // req.flash("success_msg", "All went well, tides fetched");
       res.render("tide1", { tides: tides1 });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "ERROR: " + err);
+      res.redirect("/");
+    });
+});
+
+router.get("/tide2", (req, res) => {
+  let searchQuery = getSearchQuery();
+
+  AnchArr40up.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      res.render("tide2", { tides: tides2 });
     })
     .catch((err) => {
       req.flash("error_msg", "ERROR: " + err);
@@ -71,38 +58,15 @@ router.get("/tide1", (req, res) => {
       res.redirect("/");
     });
 });
-router.get("/tide2", (req, res) => {
-  let dateJa = new Date();
-  let dateJa1 = new Date();
+router.get("/hhkv", (req, res) => {
+  let searchQuery = getSearchQuery();
 
-  dateJa1.setDate(dateJa1.getDate() + 7);
-  var dd = String(dateJa1.getDate()).padStart(2, "0");
-  var mm = String(dateJa1.getMonth() + 1).padStart(2, "0"); //January is 0!
-  var yyyy = dateJa1.getFullYear();
-  dateJa1 = mm + "/" + dd + "/" + yyyy;
-
-  var dd = String(dateJa.getDate()).padStart(2, "0");
-  var mm = String(dateJa.getMonth() + 1).padStart(2, "0"); //January is 0!
-  var yyyy = dateJa.getFullYear();
-
-  dateJa = mm + "/" + dd + "/" + yyyy;
-
-//   console.log(dateJa);
-//   console.log(dateJa1);
-
-  let searchQuery = {
-    date: { $gte: dateJa, $lte: dateJa1 },
-  };
-
-//   console.log(searchQuery);
-  AnchArr40up.find(searchQuery) //{"date": {$slice:14}
+  Hhkv.find(searchQuery) //{"date": {$slice:14}
     .then((tides2) => {
-    //   console.log(tides2);
-      res.render("tide2", { tides: tides2 });
+      res.render("hhkv", { tides: tides2 });
     })
     .catch((err) => {
       req.flash("error_msg", "ERROR: " + err);
-
       res.redirect("/");
     });
 });
@@ -123,7 +87,7 @@ router.get("/edit/:id", (req, res) => {
 
 //post routes starts here
 router.post("/api/filUpTheDateBase2/", (req, res) => {
-   let newAnchArr40up = {
+  let newAnchArr40up = {
     date: req.body.date,
     day: req.body.day,
     hwsh: req.body.hwsh,
@@ -136,7 +100,7 @@ router.post("/api/filUpTheDateBase2/", (req, res) => {
     .then((anchArr40up) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       // res.redirect('/');
-    //   console.log("added to DB");
+      //   console.log("added to DB");
     })
     .catch((err) => {
       // req.flash('error_msg', 'ERROR: '+err)
@@ -144,24 +108,23 @@ router.post("/api/filUpTheDateBase2/", (req, res) => {
     });
 });
 router.post("/api/filUpTheDateBase3/", (req, res) => {
-   let newHhkv = {
+  let newHhkv = {
     date: req.body.date,
     day: req.body.day,
     battery: req.body.battery,
     pred_ft: req.body.pred_ft,
-    sailingTime: req.body.sailingTime
-   
+    sailingTime: req.body.sailingTime,
   };
 
   Hhkv.create(newHhkv)
     .then((hhkv) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
-      res.redirect('/');
+      res.redirect("/");
       console.log("added to DB");
     })
     .catch((err) => {
       // req.flash('error_msg', 'ERROR: '+err)
-      res.redirect('/');
+      res.redirect("/");
     });
 });
 

@@ -14,9 +14,10 @@ $(document).ready(function () {
   $("#dataTable").DataTable();
 
   function filUpTheDateBase4(hhkv) {
-    hhkv.slice(1410, 1411).forEach((element) => {
+    hhkv.forEach((element) => {     
+                                  // .slice(1410, 1411)
       let table = element;
-      $.ajax("api/filUpTheDateBase3/", {
+      $.ajax("api/filUpTheDateBase4/", {
         type: "POST",
         data: table,
       }).then((res) => {
