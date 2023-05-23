@@ -13,8 +13,8 @@ import hhkv from "../../assets/data/hhk.js";
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  function filUpTheDateBase3(hhkv) {
-    hhkv.forEach((element) => {
+  function filUpTheDateBase4(hhkv) {
+    hhkv.slice(1410, 1411).forEach((element) => {
       let table = element;
       $.ajax("api/filUpTheDateBase3/", {
         type: "POST",
@@ -23,7 +23,7 @@ $(document).ready(function () {
         let dudu = res;
 
         if (dudu != undefined) {
-          // console.log("tideObject received");
+          console.log("aded");
         } else {
           console.log("problem with the response tideObj");
         }
@@ -33,5 +33,5 @@ $(document).ready(function () {
 
   console.log(hhkv);
   // showAnchSail40up(anchSail40up);
-  filUpTheDateBase3 (hhkv);
+  // filUpTheDateBase3 (hhkv);
 });

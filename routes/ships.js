@@ -156,12 +156,12 @@ router.post("/api/filUpTheDateBase3/", (req, res) => {
   Hhkv.create(newHhkv)
     .then((hhkv) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
-      // res.redirect('/');
-    //   console.log("added to DB");
+      res.redirect('/');
+      console.log("added to DB");
     })
     .catch((err) => {
       // req.flash('error_msg', 'ERROR: '+err)
-      // res.redirect('/');
+      res.redirect('/');
     });
 });
 
