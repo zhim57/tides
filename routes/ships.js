@@ -8,6 +8,7 @@ const Hhkv = require("../models/hhkv");
 const Shcstv = require("../models/shcstv");
 const B96_98 = require("../models/b96_98");
 const Cgt_bayonne = require("../models/cgt_bayonne");
+const Slackv = require("../models/slackv");
 
 //get routes starts here
 router.get("/", (req, res) => {
@@ -103,6 +104,18 @@ router.get("/cgt_bayonnev", (req, res) => {
   Cgt_bayonne.find(searchQuery) //{"date": {$slice:14}
     .then((tides2) => {
       res.render("cgt_bayonnev", { tides: tides2 });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "ERROR: " + err);
+      res.redirect("/");
+    });
+});
+router.get("/slackv", (req, res) => {
+  let searchQuery = getSearchQuery();
+
+  Slackv.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      res.render("slackv", { tides: tides2 });
     })
     .catch((err) => {
       req.flash("error_msg", "ERROR: " + err);
@@ -215,6 +228,35 @@ router.post("/api/filUpTheDateBase6/", (req, res) => {
 
   Cgt_bayonne.create(newCgt_bayonne)
     .then((cgt_bayonne) => {
+      // req.flash('success_msg', 'navigational data added to database successfully.')
+      res.redirect("/");
+      console.log("added to DB");
+    })
+    .catch((err) => {
+      // req.flash('error_msg', 'ERROR: '+err)
+      res.redirect("/");
+    });
+});
+router.post("/api/filUpTheDateBase7/", (req, res) => {
+  let newEntry = {
+    date: req.body.date,
+    h_l: req.body.h_l,
+    kvk: req.body.kvk,
+    nwk_bay: req.body.nwk_bay,
+    elz: req.body.elz,
+    tuff_point: req.body.tuff_point,
+    sh_slack: req.body.sh_slack,
+    narrows: req.body.narrows,
+    east_river: req.body.east_river,
+    north_river: req.body.north_river,
+    north_cove: req.body.north_cove,
+    chelsey_piers: req.body.chelsey_piers
+    
+  };
+
+
+  Slackv.create(newEntry)
+    .then((entry) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       res.redirect("/");
       console.log("added to DB");

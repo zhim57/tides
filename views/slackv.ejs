@@ -1,0 +1,74 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5">
+    <%- include('partials/messages') -%>
+    <h5>Slack water times :</h5>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>H/L</th>
+                <th>KVK_Slack</th>
+                <th>Nwk_bay</th>
+                <th>Elizabeth</th>
+                <th>Tuff_Point</th>
+                <th>SH_slack</th>
+                <th>Narrows</th>
+                <th>East_river</th>
+                <th>North_river</th>
+                <th>North_cove</th>
+                <th>Chelsey_Piers</th>
+                
+    
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Date</th>
+                <th>H/L</th>
+                <th>KVK_Slack</th>
+                <th>Nwk_bay</th>
+                <th>Elizabeth</th>
+                <th>Tuff_Point</th>
+                <th>SH_slack</th>
+                <th>Narrows</th>
+                <th>East_river</th>
+                <th>North_river</th>
+                <th>North_cove</th>
+                <th>Chelsey_Piers</th>
+            </tr>
+        </tfoot>
+        <tbody>
+            <% tides.forEach((tide)=> { %>
+                    <tr>
+                        <td><%= tide.date %></td>
+                        <td><%= tide.h_l %></td>
+                        <td><%= tide.kvk %></td>
+                        <td><%= tide.nwk_bay %></td>
+                        <td class="thick"><%= tide.elz %></td>
+                        <td ><%= tide.tuff_point %></td>
+                        <td class="thick"><%= tide.sh_slack %></td>
+                        <td ><%= tide.narrows %></td>
+                        <td class="thick"><%= tide.east_river %></td>
+                        <td ><%= tide.north_river %></td>
+                        <td class="thick"><%= tide.north_cove %></td>
+                        <td ><%= tide.chelsey_piers %></td>
+                        
+             
+                      
+
+                        <!-- <td>
+                            <a class="btn btn-primary" href="/edit/<%= tide.id %>">Edit</a>
+                            <form style="display: inline;" action="/delete/<%= tide.id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                        </td> -->
+                    </tr>
+               <% }) %>
+                
+
+            </tbody>
+        </table>
+    </div>
+<%- include('partials/footer') -%>

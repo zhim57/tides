@@ -1,11 +1,11 @@
 
-import cgt_bayonne from "../../assets/data/cgt_bayonne.js";
+import slackv from "../../assets/data/slackv.js";
 
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  function filUpTheDateBase7(cgt_bayonne) {
-    cgt_bayonne.forEach((element) => {     
+  function filUpTheDateBase7(array) {
+    array.forEach((element) => {     
                                   // .slice(1410, 1411)
       let table = element;
       $.ajax("api/filUpTheDateBase7/", {
@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   };
 
-  // console.log(cgt_bayonne);
+  // console.log(slackv);
   
-  // filUpTheDateBase6 (cgt_bayonne);
+  // filUpTheDateBase7 (slackv);
 });
