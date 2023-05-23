@@ -5,6 +5,7 @@ const flash = require("connect-flash");
 const AnchSail40up = require("../models/anchSail40up");
 const AnchArr40up = require("../models/anchArr40up");
 const Hhkv = require("../models/hhkv");
+const Shcstv = require("../models/shcstv");
 
 //get routes starts here
 router.get("/", (req, res) => {
@@ -70,6 +71,18 @@ router.get("/hhkv", (req, res) => {
       res.redirect("/");
     });
 });
+router.get("/shcstv", (req, res) => {
+  let searchQuery = getSearchQuery();
+
+  Shcstv.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      res.render("shcstv", { tides: tides2 });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "ERROR: " + err);
+      res.redirect("/");
+    });
+});
 
 router.get("/edit/:id", (req, res) => {
   let searchQuery = { _id: req.params.id };
@@ -107,17 +120,34 @@ router.post("/api/filUpTheDateBase2/", (req, res) => {
       // res.redirect('/');
     });
 });
-router.post("/api/filUpTheDateBase3/", (req, res) => {
-  let newHhkv = {
+router.post("/api/filUpTheDateBase4/", (req, res) => {
+  let newShcstv = {
     date: req.body.date,
     day: req.body.day,
-    battery: req.body.battery,
+    hw_sh: req.body.hw_sh,
     pred_ft: req.body.pred_ft,
-    sailingTime: req.body.sailingTime,
+    op_29_29_6: req.body.op_29_29_6,
+    cl_29_29_6: req.body.cl_29_29_6,
+    op_29_6_30: req.body.op_29_6_30,
+    cl_29_6_30: req.body.cl_29_6_30,
+    op_30_30_6: req.body.op_30_30_6,
+    cl_30_30_6: req.body.cl_30_30_6,
+    op_30_6_31: req.body.op_30_6_31,
+    cl_30_6_31: req.body.cl_30_6_31,
+    op_31_31_6: req.body.op_31_31_6,
+    cl_31_31_6: req.body.cl_31_31_6,
+    op_31_6_32: req.body.op_31_6_32,
+    cl_31_6_32: req.body.cl_31_6_32,
+    op_32_32_6: req.body.op_32_32_6,
+    cl_32_32_6: req.body.cl_32_32_6,
+    op_32_6_33: req.body.op_32_6_33,
+    cl_32_6_33: req.body.cl_32_6_33,
+    o_c_33_33_6: req.body.o_c_33_33_6,
   };
 
-  Hhkv.create(newHhkv)
-    .then((hhkv) => {
+
+  Shcstv.create(newShcstv)
+    .then((shcstv) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       res.redirect("/");
       console.log("added to DB");

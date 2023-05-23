@@ -1,0 +1,100 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5">
+    <%- include('partials/messages') -%>
+    <h5>Sandy Hook Channel start S/W (up to 29' anytime)</h5>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>HWSH</th>
+                <th>pred_ft</th>
+                <th>o 29-29.6</th>
+                <th>c 29-29.6</th>
+                <th>o 29.6-30</th>
+                <th>c 29.6-30</th>
+                <th>o 30-30.6</th>
+                <th>c 30-30.6</th>
+                <th>o 30.6-31</th>
+                <th>c 30.6-31</th>
+                <th>o 31-31.6</th>
+                <th>c 31-31.6</th>
+                <th>o 31.6-32</th>
+                <th>c 31.6-32</th>
+                <th>o 32-32.6</th>
+                <th>c 32-32.6</th>
+                <th>o 32.6-33</th>
+                <th>c 32.6-33</th>
+                <th>o-c 33-33.6</th>
+    
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>HWSH</th>
+                <th>pred_ft</th>
+                <th>o 29-29.6</th>
+                <th>c 29-29.6</th>
+                <th>o 29.6-30</th>
+                <th>c 29.6-30</th>
+                <th>o 30-30.6</th>
+                <th>c 30-30.6</th>
+                <th>o 30.6-31</th>
+                <th>c 30.6-31</th>
+                <th>o 31-31.6</th>
+                <th>c 31-31.6</th>
+                <th>o 31.6-32</th>
+                <th>c 31.6-32</th>
+                <th>o 32-32.6</th>
+                <th>c 32-32.6</th>
+                <th>o 32.6-33</th>
+                <th>c 32.6-33</th>
+                <th>o-c 33-33.6</th>
+
+            </tr>
+        </tfoot>
+        <tbody>
+            <% tides.forEach((tide)=> { %>
+                    <tr>
+                        <td><%= tide.date %></td>
+                        <td><%= tide.day %></td>
+                        <td><%= tide.hw_sh %></td>
+                        <td><%= tide.pred_ft %></td>
+                        <td class="thick"><%= tide.op_29_29_6 %></td>
+                        <td ><%= tide.cl_29_29_6 %></td>
+                        <td class="thick"><%= tide.op_29_6_30 %></td>
+                        <td ><%= tide.cl_29_6_30 %></td>
+                        <td class="thick"><%= tide.op_30_30_6 %></td>
+                        <td ><%= tide.cl_30_30_6 %></td>
+                        <td class="thick"><%= tide.op_30_6_31 %></td>
+                        <td ><%= tide.cl_30_6_31 %></td>
+                        <td class="thick"><%= tide.op_31_31_6 %></td>
+                        <td ><%= tide.cl_31_31_6 %></td>
+                        <td class="thick"><%= tide.op_31_6_32 %></td>
+                        <td ><%= tide.cl_31_6_32 %></td>
+                        <td class="thick"><%= tide.op_32_32_6 %></td>
+                        <td ><%= tide.cl_32_32_6 %></td>
+                        <td class="thick"><%= tide.op_32_6_33 %></td>
+                        <td ><%= tide.cl_32_6_33 %></td>
+                        <td class="thick"><%= tide.o_c_33_33_6 %></td>
+             
+                      
+
+                        <!-- <td>
+                            <a class="btn btn-primary" href="/edit/<%= tide.id %>">Edit</a>
+                            <form style="display: inline;" action="/delete/<%= tide.id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                        </td> -->
+                    </tr>
+               <% }) %>
+                
+
+            </tbody>
+        </table>
+    </div>
+<%- include('partials/footer') -%>
