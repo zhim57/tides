@@ -1,5 +1,5 @@
 
-import sulcv from "../../assets/data/sulcv_nwk_elz.js";
+// import sulcv from "../../assets/data/sulcv_nwk_elz.js";
 
 $(document).ready(function () {
   $("#dataTable").DataTable();
@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   };
 
-  console.log(sulcv);
+  // console.log(sulcv);
   
   // filUpTheDateBase8 (sulcv);
 });
