@@ -2,7 +2,7 @@
 
 <div class="container mt-5">
     <%- include('partials/messages') -%>
-    <h5>Howland hook Sailing Times</h5>
+    <h5>Berths -96 & 98 start SH - "in" and from berth "out"</h5>
     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
         <thead>
             <tr>
@@ -10,7 +10,10 @@
                 <th>Day</th>
                 <th>Battery</th>
                 <th>pred_ft</th>
-                <th>Sailing Time</th>
+                <th>Start SH op</th>
+                <th>Start SH cl</th>
+                <th>Sail berth o</th>
+                <th>Sail b cl</th>
                 
             </tr>
         </thead>
@@ -20,7 +23,10 @@
                     <th>Day</th>
                     <th>Battery</th>
                     <th>pred_ft</th>
-                    <th>Sailing Time</th>
+                    <th>Start SH op</th>
+                    <th>Start SH cl</th>
+                    <th>Sail berth o</th>
+                    <th>Sail b cl</th>
 
             </tr>
         </tfoot>
@@ -31,7 +37,10 @@
                         <td><%= tide.day %></td>
                         <td><%= tide.battery %></td>
                         <td><%= tide.pred_ft %></td>
-                        <td class="thick"><%= tide.sailingTime %></td>
+                        <td class="thick"><%= tide.start_SH_o %></td>
+                        <td ><%= tide.start_SH_cl %></td>
+                        <td class="thick"><%= tide.start_b_o %></td>
+                        <td ><%= tide.start_b_c %></td>
                       
 
                         <!-- <td>

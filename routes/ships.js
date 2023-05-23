@@ -6,6 +6,8 @@ const AnchSail40up = require("../models/anchSail40up");
 const AnchArr40up = require("../models/anchArr40up");
 const Hhkv = require("../models/hhkv");
 const Shcstv = require("../models/shcstv");
+const B96_98 = require("../models/b96_98");
+const b96_98 = require("../models/b96_98");
 
 //get routes starts here
 router.get("/", (req, res) => {
@@ -83,6 +85,18 @@ router.get("/shcstv", (req, res) => {
       res.redirect("/");
     });
 });
+router.get("/b96_98v", (req, res) => {
+  let searchQuery = getSearchQuery();
+
+  B96_98.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      res.render("b96_98v", { tides: tides2 });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "ERROR: " + err);
+      res.redirect("/");
+    });
+});
 
 router.get("/edit/:id", (req, res) => {
   let searchQuery = { _id: req.params.id };
@@ -148,6 +162,32 @@ router.post("/api/filUpTheDateBase4/", (req, res) => {
 
   Shcstv.create(newShcstv)
     .then((shcstv) => {
+      // req.flash('success_msg', 'navigational data added to database successfully.')
+      res.redirect("/");
+      console.log("added to DB");
+    })
+    .catch((err) => {
+      // req.flash('error_msg', 'ERROR: '+err)
+      res.redirect("/");
+    });
+});
+router.post("/api/filUpTheDateBase5/", (req, res) => {
+  let newB96_98 = {
+    date: req.body.date,
+    day: req.body.day,
+    battery: req.body.battery,
+    pred_ft: req.body.pred_ft,
+    start_SH_o: req.body.start_SH_o,
+    start_SH_cl: req.body.start_SH_cl,
+    op_29_6_30: req.body.op_29_6_30,
+    start_b_o: req.body.start_b_o,
+    start_b_c: req.body.start_b_c,
+    
+  };
+
+
+  B96_98.create(newB96_98)
+    .then((b96_98) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       res.redirect("/");
       console.log("added to DB");
