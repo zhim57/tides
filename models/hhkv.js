@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 let hhkvSchema = new mongoose.Schema({
     date : String,
     day : String,
-    bttery : String,
+    battery : String,
     pred_ft : Number,
     sailingTime : String,
   
