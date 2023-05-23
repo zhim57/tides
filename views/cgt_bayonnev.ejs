@@ -1,0 +1,61 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5">
+    <%- include('partials/messages') -%>
+    <h5>CGT Bayonne SH starting times and Sailing Times from berth</h5>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Battery</th>
+                <th>pred_ft</th>
+                <th>Start_SH_o</th>
+                <th>Start_SH_c</th>
+                <th>Sail_Berth_o</th>
+                <th>Sail_Berth_c</th>
+             
+                
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Battery</th>
+                <th>pred_ft</th>
+                <th>Start_SH_o</th>
+                <th>Start_SH_c</th>
+                <th>Sail_Berth_o</th>
+                <th>Sail_Berth_c</th>
+
+            </tr>
+        </tfoot>
+        <tbody>
+            <% tides.forEach((tide)=> { %>
+                    <tr>
+                        <td><%= tide.date %></td>
+                        <td><%= tide.day %></td>
+                        <td><%= tide.battery %></td>
+                        <td><%= tide.pred_ft %></td>
+                        <td class="thick"><%= tide.st_win_op %></td>
+                        <td ><%= tide.st_win_cl %></td>
+                        <td class="thick"><%= tide.sail_w_op %></td>
+                        <td ><%= tide.sail_w_cl %></td>
+                      
+
+                        <!-- <td>
+                            <a class="btn btn-primary" href="/edit/<%= tide.id %>">Edit</a>
+                            <form style="display: inline;" action="/delete/<%= tide.id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                        </td> -->
+                    </tr>
+               <% }) %>
+                
+
+            </tbody>
+        </table>
+    </div>
+<%- include('partials/footer') -%>

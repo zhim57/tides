@@ -1,23 +1,14 @@
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchArr40up from "../../assets/data/arr_anc_more_40_or_more_800.js";
-import b96_98 from "../../assets/data/b96_98.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
-// import anchSail40up from "../../assets/data/anch_sail_more_40_or_more_800.js";
+
+import cgt_bayonne from "../../assets/data/cgt_bayonne.js";
 
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  function filUpTheDateBase5(b96_98) {
-    b96_98.forEach((element) => {     
+  function filUpTheDateBase7(cgt_bayonne) {
+    cgt_bayonne.forEach((element) => {     
                                   // .slice(1410, 1411)
       let table = element;
-      $.ajax("api/filUpTheDateBase5/", {
+      $.ajax("api/filUpTheDateBase7/", {
         type: "POST",
         data: table,
       }).then((res) => {
@@ -32,7 +23,7 @@ $(document).ready(function () {
     });
   };
 
-  // console.log(b96_98);
-  // showAnchSail40up(anchSail40up);
-  // filUpTheDateBase5 (b96_98);
+  // console.log(cgt_bayonne);
+  
+  // filUpTheDateBase6 (cgt_bayonne);
 });
