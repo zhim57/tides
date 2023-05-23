@@ -5,6 +5,7 @@ const flash = require("connect-flash");
 const Tide = require("../models/tide");
 const AnchSail40up = require("../models/anchSail40up");
 const AnchArr40up = require("../models/anchArr40up");
+const Hkkv = require("../models/hkkv");
 
 //get routes starts here
 router.get("/", (req, res) => {
@@ -143,17 +144,17 @@ router.post("/api/filUpTheDateBase2/", (req, res) => {
     });
 });
 router.post("/api/filUpTheDateBase3/", (req, res) => {
-   let newAnchArr40up = {
+   let newHkkv = {
     date: req.body.date,
     day: req.body.day,
-    hwsh: req.body.hwsh,
+    battery: req.body.battery,
     pred_ft: req.body.pred_ft,
-    windowOpen: req.body.windowOpen,
-    windowClose: req.body.windowClose,
+    sailingTime: req.body.sailingTime
+   
   };
 
-  AnchArr40up.create(newAnchArr40up)
-    .then((anchArr40up) => {
+  Hkkv.create(newHkkv)
+    .then((hkkv) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       // res.redirect('/');
     //   console.log("added to DB");
