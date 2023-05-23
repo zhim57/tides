@@ -1,14 +1,14 @@
 
-import slackv from "../../assets/data/slackv.js";
+import sulcv from "../../assets/data/sulcv_nwk_elz.js";
 
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  function filUpTheDateBase7(array) {
-    array.forEach((element) => {     
+  function filUpTheDateBase8(array) {
+    array.slice(1345, 1349).forEach((element) => {     
                                   // .slice(1410, 1411)
       let table = element;
-      $.ajax("api/filUpTheDateBase7/", {
+      $.ajax("api/filUpTheDateBase9/", {
         type: "POST",
         data: table,
       }).then((res) => {
@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   };
 
-  // console.log(slackv);
+  console.log(sulcv);
   
-  // filUpTheDateBase7 (slackv);
+  // filUpTheDateBase8 (sulcv);
 });

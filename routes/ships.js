@@ -9,6 +9,7 @@ const Shcstv = require("../models/shcstv");
 const B96_98 = require("../models/b96_98");
 const Cgt_bayonne = require("../models/cgt_bayonne");
 const Slackv = require("../models/slackv");
+const Sulcv = require("../models/sulcv");
 
 //get routes starts here
 router.get("/", (req, res) => {
@@ -116,6 +117,18 @@ router.get("/slackv", (req, res) => {
   Slackv.find(searchQuery) //{"date": {$slice:14}
     .then((tides2) => {
       res.render("slackv", { tides: tides2 });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "ERROR: " + err);
+      res.redirect("/");
+    });
+});
+router.get("/sulcv", (req, res) => {
+  let searchQuery = getSearchQuery();
+
+  Sulcv.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      res.render("sulcv", { tides: tides2 });
     })
     .catch((err) => {
       req.flash("error_msg", "ERROR: " + err);
@@ -256,6 +269,29 @@ router.post("/api/filUpTheDateBase7/", (req, res) => {
 
 
   Slackv.create(newEntry)
+    .then((entry) => {
+      // req.flash('success_msg', 'navigational data added to database successfully.')
+      res.redirect("/");
+      console.log("added to DB");
+    })
+    .catch((err) => {
+      // req.flash('error_msg', 'ERROR: '+err)
+      res.redirect("/");
+    });
+});
+router.post("/api/filUpTheDateBase8/", (req, res) => {
+  let newEntry = {
+    date: req.body.date,
+    day: req.body.day,
+    battery: req.body.battery,
+    pred_ft: req.body.pred_ft,
+    sh_st_o: req.body.sh_st_o,
+    sh_st_c: req.body.sh_st_c,
+    b_st_o: req.body.b_st_o,
+    b_st_c: req.body.b_st_c
+  };
+
+  Sulcv.create(newEntry)
     .then((entry) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       res.redirect("/");
