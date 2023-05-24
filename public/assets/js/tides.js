@@ -1,11 +1,11 @@
 
-// import sulcv from "../../assets/data/sulcv_nwk_elz.js";
+import s_w_sailing from "../../assets/data/sw_sailingv.js";
 
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  function filUpTheDateBase8(array) {
-    array.slice(1345, 1349).forEach((element) => {     
+  function filUpTheDateBase9(array) {
+    array.forEach((element) => {     
                                   // .slice(1410, 1411)
       let table = element;
       $.ajax("api/filUpTheDateBase9/", {
@@ -15,7 +15,7 @@ $(document).ready(function () {
         let dudu = res;
 
         if (dudu != undefined) {
-          console.log("aded to DB");
+          console.log("added to DB");
         } else {
           console.log("problem with the response tideObj");
         }
@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   };
 
-  // console.log(sulcv);
+  console.log(s_w_sailing);
   
-  // filUpTheDateBase8 (sulcv);
+  // filUpTheDateBase9 (s_w_sailing);
 });
