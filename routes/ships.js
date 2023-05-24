@@ -10,6 +10,7 @@ const B96_98 = require("../models/b96_98");
 const Cgt_bayonne = require("../models/cgt_bayonne");
 const Slackv = require("../models/slackv");
 const Sulcv = require("../models/sulcv");
+const Sw_sailing = require("../models/sw_sail");
 
 //get routes starts here
 router.get("/", (req, res) => {
@@ -135,6 +136,18 @@ router.get("/sulcv", (req, res) => {
       res.redirect("/");
     });
 });
+router.get("/sw_sailv", (req, res) => {
+  let searchQuery = getSearchQuery();
+
+  Sw_sailing.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      res.render("sw_sail", { tides: tides2 });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "ERROR: " + err);
+      res.redirect("/");
+    });
+});
 
 
 
@@ -212,10 +225,10 @@ router.post("/api/filUpTheDateBase5/", (req, res) => {
     start_b_c: req.body.start_b_c,
     
   };
-
-
+  
+  
   B96_98.create(newB96_98)
-    .then((b96_98) => {
+  .then((b96_98) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       res.redirect("/");
       console.log("added to DB");
@@ -249,10 +262,10 @@ router.post("/api/filUpTheDateBase6/", (req, res) => {
       // req.flash('error_msg', 'ERROR: '+err)
       res.redirect("/");
     });
-});
-router.post("/api/filUpTheDateBase7/", (req, res) => {
-  let newEntry = {
-    date: req.body.date,
+  });
+  router.post("/api/filUpTheDateBase7/", (req, res) => {
+    let newEntry = {
+      date: req.body.date,
     h_l: req.body.h_l,
     kvk: req.body.kvk,
     nwk_bay: req.body.nwk_bay,
@@ -267,7 +280,7 @@ router.post("/api/filUpTheDateBase7/", (req, res) => {
     
   };
 
-
+  
   Slackv.create(newEntry)
     .then((entry) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
@@ -290,9 +303,9 @@ router.post("/api/filUpTheDateBase8/", (req, res) => {
     b_st_o: req.body.b_st_o,
     b_st_c: req.body.b_st_c
   };
-
+  
   Sulcv.create(newEntry)
-    .then((entry) => {
+  .then((entry) => {
       // req.flash('success_msg', 'navigational data added to database successfully.')
       res.redirect("/");
       console.log("added to DB");
@@ -303,6 +316,44 @@ router.post("/api/filUpTheDateBase8/", (req, res) => {
     });
 });
 
+router.post("/api/filUpTheDateBase9/", (req, res) => {
+  let newObj = {
+    date: req.body.date,
+    day: req.body.day,
+    time: req.body.time,
+    pred_ft: req.body.pred_ft,
+    b29_30_6_o: req.body.b29_30_6_o,
+    b29_30_6_c: req.body.b29_30_6_c,
+    b30_6_31_6_o: req.body.b30_6_31_6_o,
+    b30_6_31_6_c: req.body.b30_6_31_6_c,
+    b31_6_33_6_o: req.body.b31_6_33_6_o,
+    b31_6_33_6_c: req.body.b31_6_33_6_c,
+    c29_30_6_o: req.body.c29_30_6_o,
+    c29_30_6_c: req.body.c29_30_6_c,
+    c30_6_31_6_o: req.body.c30_6_31_6_o,
+    c30_6_31_6_c: req.body.c30_6_31_6_c,
+    c31_6_33_6_o: req.body.c31_6_33_6_o,
+    c31_6_33_6_c: req.body.c31_6_33_6_c,
+    m29_30_6_o: req.body.m29_30_6_o,
+    m29_30_6_c: req.body.m29_30_6_c,
+    m30_6_31_6_o: req.body.m30_6_31_6_o,
+    m30_6_31_6_c: req.body.m30_6_31_6_c,
+    m31_6_33_6_o: req.body.m31_6_33_6_o,
+    m31_6_33_6_c: req.body.m31_6_33_6_c
+  };
+
+
+  Sw_sailing.create(newObj)
+    .then((shcstv) => {
+      // req.flash('success_msg', 'navigational data added to database successfully.')
+      res.redirect("/");
+      console.log("added to DB");
+    })
+    .catch((err) => {
+      // req.flash('error_msg', 'ERROR: '+err)
+      res.redirect("/");
+    });
+});
 //post routes end here
 
 //put routes starts here

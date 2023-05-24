@@ -1,14 +1,14 @@
 
-import s_w_sailing from "../../assets/data/sw_sailingv.js";
+import sw_sailing from "../../assets/data/sw_sailingv.js";
 
 $(document).ready(function () {
   $("#dataTable").DataTable();
 
-  function filUpTheDateBase9(array) {
+  function filUpTheDateBase10(array) {
     array.forEach((element) => {     
                                   // .slice(1410, 1411)
       let table = element;
-      $.ajax("api/filUpTheDateBase9/", {
+      $.ajax("api/filUpTheDateBase10/", {
         type: "POST",
         data: table,
       }).then((res) => {
@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   };
 
-  console.log(s_w_sailing);
+  console.log(sw_sailing);
   
-  // filUpTheDateBase9 (s_w_sailing);
+  // filUpTheDateBase10 (sw_sailing);
 });

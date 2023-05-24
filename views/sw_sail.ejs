@@ -1,0 +1,104 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5">
+    <%- include('partials/messages') -%>
+    <h5>PERTH AMBOY TERRITORY S/W - OUT-BOUND - (upto 29' start out anytime)</h5>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>Bayway_o 29-30.6</th>
+                <th>Bayway_c 29-30.6</th>
+                <th>Bayway_o 30.6-31.6</th>
+                <th>Bayway_c 30.6-31.6</th>
+                <th>Bayway_o 31.6-33.6</th>
+                <th>Bayway_c 31.6-33.6</th>
+                <th>Carteret_o 29-30.6</th>
+                <th>Carteret_c 29-30.6</th>
+                <th>Carteret_o 30.6-31.6</th>
+                <th>Carteret_c 30.6-31.6</th>
+                <th>Carteret_o 31.6-33.6</th>
+                <th>Carteret_c 31.6-33.6</th>
+                <th>Motiva_o 29-30.6</th>
+                <th>Motiva_c 29-30.6</th>
+                <th>Motiva_o_ 30.6-31.6</th>
+                <th>Motiva_c_ 30.6-31.6</th>
+                <th>Motiva_o_ 31.6-33.6</th>
+                <th>Motiva_c_ 31.6-33.6</th>
+    
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Date</th>
+                <th>Day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>Bayway_o 29-30.6</th>
+                <th>Bayway_c 29-30.6</th>
+                <th>Bayway_o 30.6-31.6</th>
+                <th>Bayway_c 30.6-31.6</th>
+                <th>Bayway_o 31.6-33.6</th>
+                <th>Bayway_c 31.6-33.6</th>
+                <th>Carteret_o 29-30.6</th>
+                <th>Carteret_c 29-30.6</th>
+                <th>Carteret_o 30.6-31.6</th>
+                <th>Carteret_c 30.6-31.6</th>
+                <th>Carteret_o 31.6-33.6</th>
+                <th>Carteret_c 31.6-33.6</th>
+                <th>Motiva_o 29-30.6</th>
+                <th>Motiva_c 29-30.6</th>
+                <th>Motiva_o_ 30.6-31.6</th>
+                <th>Motiva_c_ 30.6-31.6</th>
+                <th>Motiva_o_ 31.6-33.6</th>
+                <th>Motiva_c_ 31.6-33.6</th>
+              
+
+            </tr>
+        </tfoot>
+        <tbody>
+            <% tides.forEach((tide)=> { %>
+                    <tr>
+                        <td><%= tide.date %></td>
+                        <td><%= tide.day %></td>
+                        <td><%= tide.time %></td>
+                        <td><%= tide.pred_ft %></td>
+                        <td class="thick"><%= tide.b29_30_6_o %></td>
+                        <td ><%= tide.b29_30_6_c %></td>
+                        <td class="thick"><%= tide.b30_6_31_6_o %></td>
+                        <td ><%= tide.b30_6_31_6_c %></td>
+                        <td class="thick"><%= tide.b31_6_33_6_o %></td>
+                        <td ><%= tide.b31_6_33_6_c %></td>
+                        <td class="thick"><%= tide.c29_30_6_o %></td>
+                        <td ><%= tide.c29_30_6_c %></td>
+                        <td class="thick"><%= tide.c30_6_31_6_o %></td>
+                        <td ><%= tide.c30_6_31_6_c %></td>
+                        <td class="thick"><%= tide.c31_6_33_6_o %></td>
+                        <td ><%= tide.c31_6_33_6_c %></td>
+                        <td class="thick"><%= tide.m29_30_6_o %></td>
+                        <td ><%= tide.m29_30_6_c %></td>
+                        <td class="thick"><%= tide.m30_6_31_6_o %></td>
+                        <td ><%= tide.m30_6_31_6_c %></td>
+                        <td class="thick"><%= tide.m31_6_33_6_o %></td>
+                        <td ><%= tide.m31_6_33_6_c %></td>
+             
+                      
+
+                        <!-- <td>
+                            <a class="btn btn-primary" href="/edit/<%= tide.id %>">Edit</a>
+                            <form style="display: inline;" action="/delete/<%= tide.id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                        </td> -->
+                    </tr>
+               <% }) %>
+                
+
+            </tbody>
+        </table>
+    </div>
+<%- include('partials/footer') -%>
