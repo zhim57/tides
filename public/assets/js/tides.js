@@ -1,5 +1,5 @@
 
-import sw_sailing from "../../assets/data/sw_sailingv.js";
+// import tides from "../../assets/data/tides.js";
 
 $(document).ready(function () {
   $("#dataTable").DataTable();
@@ -23,7 +23,7 @@ $(document).ready(function () {
     });
   };
 
-  console.log(sw_sailing);
+  // console.log(tides);
   
-  // filUpTheDateBase10 (sw_sailing);
+  // filUpTheDateBase10 (tides);
 });

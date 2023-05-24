@@ -1,9 +1,44 @@
 const mongoose = require('mongoose');
-
-let tideScheme = new mongoose.Schema({
-    name : String,
-    designation : String,
-    salary : Number
+let tideSchema = new mongoose.Schema({
+    bht_event : String,
+    bht_date : String,
+    bht_day : String,
+    bht_time : String,
+    bht_pred_ft : String,
+    blt_event : String,
+    blt_date : String,
+    blt_day : String,
+    blt_time : String,
+    blt_pred_ft : String,
+    sht_event : String,
+    sht_date : String,
+    sht_day : String,
+    sht_time : String,
+    sht_pred_ft : String,
+    slt_event : String,
+    slt_date : String,
+    slt_day : String,
+    slt_time : String,
+    slt_pred_ft : String,    
+    nar_ebb_event : String,
+    nar_date_time : String ,  
+    nar_ebb_speed : String,
+    nar_flood_event : String,   
+    nar_flood_date_time : String,
+    nar_flood_speed : String,  
+    nar_slack_event : String,   
+    nar_slack_date_time : String ,  
+    nar_slack_speed : String ,
+    hg_ebb_event : String ,  
+    hg_ebb_date_time : String ,  
+    hg_ebb_speed : String , 
+    hg_flood_event : String ,  
+    hg_flood_date_time : String ,  
+    hg_flood_speed : String ,  
+    hg_slack_event : String ,  
+    hg_slack_date_time : String ,  
+    hg_slack_speed : String 
+  
 });
 
-module.exports = mongoose.model('Tide', tideScheme);
+module.exports = mongoose.model('Tide', tideSchema);

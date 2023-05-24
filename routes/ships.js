@@ -11,6 +11,7 @@ const Cgt_bayonne = require("../models/cgt_bayonne");
 const Slackv = require("../models/slackv");
 const Sulcv = require("../models/sulcv");
 const Sw_sailing = require("../models/sw_sail");
+const Tide = require("../models/tide");
 
 //get routes starts here
 router.get("/", (req, res) => {
@@ -142,6 +143,18 @@ router.get("/sw_sailv", (req, res) => {
   Sw_sailing.find(searchQuery) //{"date": {$slice:14}
     .then((tides2) => {
       res.render("sw_sail", { tides: tides2 });
+    })
+    .catch((err) => {
+      req.flash("error_msg", "ERROR: " + err);
+      res.redirect("/");
+    });
+});
+router.get("/tidev", (req, res) => {
+  let searchQuery = getSearchQuery();
+
+  Tide.find(searchQuery) //{"date": {$slice:14}
+    .then((tides2) => {
+      res.render("tides", { tides: tides2 });
     })
     .catch((err) => {
       req.flash("error_msg", "ERROR: " + err);
@@ -354,6 +367,61 @@ router.post("/api/filUpTheDateBase9/", (req, res) => {
       res.redirect("/");
     });
 });
+router.post("/api/filUpTheDateBase10/", (req, res) => {
+  let newObj = {
+    bht_event: req.body.bht_event,
+    bht_date: req.body.bht_date,
+    bht_day: req.body.bht_day,
+    bht_time: req.body.bht_time,
+    bht_pred_ft: req.body.bht_pred_ft,
+    blt_event: req.body.blt_event,
+    blt_date: req.body.blt_date,
+    blt_day: req.body.blt_day,
+    blt_time: req.body.blt_time,
+    blt_pred_ft: req.body.blt_pred_ft,
+    sht_event: req.body.sht_event,
+    sht_date: req.body.sht_date,
+    sht_day: req.body.sht_day,
+    sht_time: req.body.sht_time,
+    sht_pred_ft: req.body.sht_pred_ft,
+    slt_event: req.body.slt_event,
+    slt_date: req.body.slt_date,
+    slt_day: req.body.slt_day,
+    slt_time: req.body.slt_time,
+    slt_pred_ft: req.body.slt_pred_ft,
+    nar_ebb_event: req.body.nar_ebb_event,
+    nar_date_time: req.body.nar_date_time,
+    nar_ebb_speed: req.body.nar_ebb_speed,
+    nar_flood_event: req.body.nar_flood_event,
+    nar_flood_date_time: req.body.nar_flood_date_time,
+    nar_flood_speed: req.body.nar_flood_speed,
+    nar_slack_event: req.body.nar_slack_event,
+    nar_slack_date_time: req.body.nar_slack_date_time,
+    nar_slack_speed: req.body.nar_slack_speed,
+    hg_ebb_event: req.body.hg_ebb_event,
+    hg_ebb_date_time: req.body.hg_ebb_date_time,
+    hg_ebb_speed: req.body.hg_ebb_speed,
+    hg_flood_event: req.body.hg_flood_event,
+    hg_flood_date_time: req.body.hg_flood_date_time,
+    hg_flood_speed: req.body.hg_flood_speed,
+    hg_slack_event: req.body.hg_slack_event,
+    hg_slack_date_time: req.body.hg_slack_date_time,
+    hg_slack_speed: req.body.hg_slack_speed 
+  };
+
+
+  Tide.create(newObj)
+    .then((shcstv) => {
+      // req.flash('success_msg', 'navigational data added to database successfully.')
+      res.redirect("/");
+      console.log("added to DB");
+    })
+    .catch((err) => {
+      // req.flash('error_msg', 'ERROR: '+err)
+      res.redirect("/");
+    });
+});
+
 //post routes end here
 
 //put routes starts here
