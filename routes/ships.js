@@ -149,10 +149,14 @@ router.get("/sw_sailv", (req, res) => {
       res.redirect("/");
     });
 });
-router.get("/tidev", (req, res) => {
+router.get("/tides", (req, res) => {
   let searchQuery = getSearchQuery();
+  
+  let searchQuery1= {
+    bht_date: { $gte: searchQuery.date.$gte, $lte: searchQuery.date.$lte },
+  };
 
-  Tide.find(searchQuery) //{"date": {$slice:14}
+  Tide.find(searchQuery1) //{"date": {$slice:14}
     .then((tides2) => {
       res.render("tides", { tides: tides2 });
     })

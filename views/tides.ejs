@@ -1,0 +1,88 @@
+<%- include('partials/header') -%>
+
+<div class="container mt-5">
+    <%- include('partials/messages') -%>
+    <h5>Tides - still in construction</h5>
+    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <thead>
+            <tr>
+                <th>Battery High</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>Battery Low</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>SH_high</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>SH_Low</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                
+    
+            </tr>
+        </thead>
+        <tfoot>
+            <tr>
+                <th>Battery High</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>Battery Low</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>SH_high</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+                <th>SH_Low</th>
+                <th>Date</th>
+                <th>day</th>
+                <th>Time</th>
+                <th>pred_ft</th>
+
+            </tr>
+        </tfoot>
+        <tbody>
+            <% tides.forEach((tide)=> { %>
+                    <tr>
+                        <td><%= tide.bht_event %></td>
+                        <td><%= tide.bht_date %></td>
+                        <td><%= tide.bht_day %></td>
+                        <td><%= tide.bht_time %></td>
+                        <td class="thick"><%= tide.bht_pred_ft %></td>
+                        <td><%= tide.blt_event %></td>
+                        <td><%= tide.blt_date %></td>
+                        <td><%= tide.blt_day %></td>
+                        <td><%= tide.blt_time %></td>
+                        <td><%= tide.blt_pred_ft %></td>
+                                     
+                      
+
+                        <!-- <td>
+                            <a class="btn btn-primary" href="/edit/<%= tide.id %>">Edit</a>
+                            <form style="display: inline;" action="/delete/<%= tide.id %>?_method=DELETE" method="POST">
+                                <input type="hidden" name="_method" value="DELETE">
+                                <button style="cursor: pointer;" type="submit" class="btn btn-danger ml-2">Delete</button>
+                            </form>
+                        </td> -->
+                    </tr>
+               <% }) %>
+                
+
+            </tbody>
+        </table>
+    </div>
+<%- include('partials/footer') -%>
